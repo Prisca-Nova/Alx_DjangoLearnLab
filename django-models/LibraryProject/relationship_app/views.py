@@ -5,8 +5,10 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm  
 from django.contrib.auth.decorators import login_required
 from .models import Book
-from .models import Library, UserProfile
+from .models import Library
+from .models import UserProfile
 from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import user_passes_test
 
 # --- Existing views ---
 def list_books(request):
