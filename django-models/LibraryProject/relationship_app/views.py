@@ -9,6 +9,7 @@ from .models import Library
 from .models import UserProfile
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.decorators import user_passes_test
+from .forms import BookForm
 
 # --- Existing views ---
 def list_books(request):
