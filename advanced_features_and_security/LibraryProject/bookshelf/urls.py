@@ -1,24 +1,21 @@
 from django.urls import path
-from django.contrib.auth.views import LoginView, LogoutView
-from . import views  
+from . import views
 
 urlpatterns = [
-    # Books and Libraries
-    path('books/', views.list_books, name='list_books'),
-    path('library/<int:pk>/', views.LibraryDetailView.as_view(), name='library_detail'),
-
-    # Authentication
-    path('login/', LoginView.as_view(template_name='relationship_app/login.html'), name='login'),
-    path('logout/', LogoutView.as_view(template_name='relationship_app/logout.html'), name='logout'),
-    path('register/', views.register, name='register'),
-
-    # Role-based views
-    path('admin/', views.admin_view, name='admin_view'),
-    path('librarian/', views.librarian_view, name='librarian_view'),
-    path('member/', views.member_view, name='member_view'),
-
-    # **Permission-protected Book views**
-    path('book/add/', views.add_book, name='add_book'),
-    path('book/edit/<int:pk>/', views.edit_book, name='edit_book'),
-    path('book/delete/<int:pk>/', views.delete_book, name='delete_book'),
+    # Dashboard
+    path('', views.dashboard_view, name='dashboard'),
+    
+    # Book URLs
+    path('books/', views.book_list_view, name='book_list'),
+    path('books/cbv/', views.BookListView.as_view(), name='book_list_cbv'),
+    path('books/<int:pk>/', views.book_detail_view, name='book_detail'),
+    path('books/create/', views.book_create_view, name='book_create'),
+    path('books/<int:pk>/edit/', views.book_edit_view, name='book_edit'),
+    path('books/<int:pk>/delete/', views.book_delete_view, name='book_delete'),
+    
+    # Author URLs
+    path('authors/', views.author_list_view, name='author_list'),
+    path('authors/<int:pk>/', views.AuthorDetailView.as_view(), name='author_detail'),
+    path('authors/create/', views.author_create_view, name='author_create'),
+    path('authors/<int:pk>/edit/', views.author_edit_view, name='author_edit'),
 ]

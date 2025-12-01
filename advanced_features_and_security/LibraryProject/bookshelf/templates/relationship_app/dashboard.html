@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.get_full_name }}</h1>
+    <p>Email: {{ user.email }}</p>
+    
+    <h2>Your Permissions:</h2>
+    <ul>
+        <li>Can view books: {{ can_view_book }}</li>
+        <li>Can create books: {{ can_create_book }}</li>
+        <li>Can edit books: {{ can_edit_book }}</li>
+        <li>Can delete books: {{ can_delete_book }}</li>
+        <li>Can view authors: {{ can_view_author }}</li>
+        <li>Can create authors: {{ can_create_author }}</li>
+        <li>Can edit authors: {{ can_edit_author }}</li>
+        <li>Can delete authors: {{ can_delete_author }}</li>
+    </ul>
+    
+    <h2>Navigation:</h2>
+    <ul>
+        {% if can_view_book %}
+        <li><a href="{% url 'book_list' %}">View Books</a></li>
+        {% endif %}
+        {% if can_create_book %}
+        <li><a href="{% url 'book_create' %}">Create Book</a></li>
+        {% endif %}
+        {% if can_view_author %}
+        <li><a href="{% url 'author_list' %}">View Authors</a></li>
+        {% endif %}
+    </ul>
+</body>
+</html>
