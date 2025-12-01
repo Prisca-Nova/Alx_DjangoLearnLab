@@ -1,5 +1,1 @@
-INSTALLED_APPS = [
-    # other apps
-    'accounts',
-    'bookshelf',
-]
+AUTH_USER_MODEL = 'accounts.CustomUser'
