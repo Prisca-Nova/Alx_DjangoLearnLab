@@ -32,10 +32,10 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
     template_name = "blog/comment_form.html"
 
     def form_valid(self, form):
+        # assign the logged-in user and the post
         form.instance.author = self.request.user
         form.instance.post = get_object_or_404(Post, pk=self.kwargs['post_id'])
         return super().form_valid(form)
 
     def get_success_url(self):
         return reverse('blog:post-detail', kwargs={'pk': self.object.post.pk})
-

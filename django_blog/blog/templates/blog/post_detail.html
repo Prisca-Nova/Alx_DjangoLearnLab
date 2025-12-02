@@ -37,7 +37,6 @@
     <textarea name="content" rows="3" required></textarea>
     <button type="submit">Post Comment</button>
 </form>
-
 {% else %}
 <p><a href="{% url 'blog:login' %}">Login</a> to post a comment.</p>
 {% endif %}
