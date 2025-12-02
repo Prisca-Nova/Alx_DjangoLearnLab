@@ -16,6 +16,13 @@ SESSION_COOKIE_SECURE = True  # Session cookies only over HTTPS
 # Add 'csp' to INSTALLED_APPS
 INSTALLED_APPS = [
     # ... other apps ...
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'bookshelf',
     'csp',  # For Content Security Policy
 ]
 
