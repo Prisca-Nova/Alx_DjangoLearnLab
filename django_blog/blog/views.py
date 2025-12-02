@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse, reverse_lazy
 from django.contrib import messages
+from django.db.models import Q
 from .forms import CustomUserCreationForm, PostForm, CommentForm
 from .models import Post, Comment
 
@@ -120,3 +121,27 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def get_success_url(self):
         return reverse('blog:post-detail', kwargs={'pk': self.object.post.pk})
+
+# View posts by tag
+class TaggedPostListView(ListView):
+    model = Post
+    template_name = "blog/tagged_posts.html"
+    context_object_name = "posts"
+
+    def get_queryset(self):
+        tag_name = self.kwargs['tag_name']
+        return Post.objects.filter(tags__name__iexact=tag_name).order_by('-published_date')
+
+# Search view
+class PostSearchListView(ListView):
+    model = Post
+    template_name = "blog/search_results.html"
+    context_object_name = "posts"
+
+    def get_queryset(self):
+        query = self.request.GET.get('q', '')
+        return Post.objects.filter(
+            Q(title__icontains=query) |
+            Q(content__icontains=query) |
+            Q(tags__name__icontains=query)
+        ).distinct().order_by('-published_date')

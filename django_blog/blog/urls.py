@@ -19,4 +19,9 @@ urlpatterns = [
     # User authentication
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
+
+    # Tag and Search URLs
+    path('tags/<str:tag_name>/', views.TaggedPostListView.as_view(), name='tagged-posts'),
+    path('search/', views.PostSearchListView.as_view(), name='search-posts'),
+
 ]

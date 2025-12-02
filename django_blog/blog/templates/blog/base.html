@@ -15,11 +15,17 @@
       <a href="{% url 'blog:login' %}">Login</a> |
       <a href="{% url 'blog:register' %}">Register</a>
     {% endif %}
+    
   </nav>
 
   <main>
     {% if messages %}
-      <ul class="messages">
+      <ul class="messages">add this : <form method="get" action="{% url 'blog:search-posts' %}">
+    <input type="text" name="q" placeholder="Search posts..." required>
+    <button type="submit">Search</button>
+</form>
+
+
         {% for message in messages %}
           <li>{{ message }}</li>
         {% endfor %}
