@@ -32,11 +32,12 @@
 
 {% if user.is_authenticated %}
 <h3>Add a Comment</h3>
-<form method="post" action="{% url 'blog:comment-create' post.pk %}">
+<form method="post" action="{% url 'blog:comment-create' post.id %}">
     {% csrf_token %}
     <textarea name="content" rows="3" required></textarea>
     <button type="submit">Post Comment</button>
 </form>
+
 {% else %}
 <p><a href="{% url 'blog:login' %}">Login</a> to post a comment.</p>
 {% endif %}

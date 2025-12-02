@@ -7,6 +7,7 @@ from django.urls import reverse, reverse_lazy
 from .forms import CustomUserCreationForm, PostForm, CommentForm
 from .models import Post, Comment
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
 
 def register(request):
     if request.method == "POST":
