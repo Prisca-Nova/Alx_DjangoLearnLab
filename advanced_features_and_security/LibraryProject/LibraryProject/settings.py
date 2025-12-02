@@ -15,7 +15,6 @@ SESSION_COOKIE_SECURE = True  # Session cookies only over HTTPS
 # If you're using django-csp (optional but recommended for CSP)
 # Add 'csp' to INSTALLED_APPS
 INSTALLED_APPS = [
-    # ... other apps ...
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -25,6 +24,7 @@ INSTALLED_APPS = [
     'bookshelf',
     'csp',  # For Content Security Policy
 ]
+AUTH_USER_MODEL = 'bookshelf.CustomUser'
 
 # Add CSP middleware
 MIDDLEWARE = [
