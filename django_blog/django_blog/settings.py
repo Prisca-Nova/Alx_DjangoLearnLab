@@ -14,7 +14,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',  # REQUIRED for checker
+    'blog', 
 ]
 
 MIDDLEWARE = [
@@ -44,6 +44,10 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGIN_URL = "blog:login"
+LOGIN_REDIRECT_URL = "blog:profile"
+LOGOUT_REDIRECT_URL = "blog:login"
 
 WSGI_APPLICATION = 'django_blog.wsgi.application'
 
