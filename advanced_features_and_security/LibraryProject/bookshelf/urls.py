@@ -18,4 +18,6 @@ urlpatterns = [
     path('authors/<int:pk>/', views.AuthorDetailView.as_view(), name='author_detail'),
     path('authors/create/', views.author_create, name='author_create'),
     path('authors/<int:pk>/edit/', views.author_edit, name='author_edit'),
+
+    path('form-example/', views.form_example, name='form_example'),
 ]
