@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+{% block title %}Posts{% endblock %}
+{% block content %}
+<h1>Posts</h1>
+{% if user.is_authenticated %}
+<p><a href="{% url 'blog:post-create' %}">Create new post</a></p>
+{% endif %}
+<ul>
+  {% for post in posts %}
+  <li>
+    <a href="{% url 'blog:post-detail' post.pk %}">{{ post.title }}</a>
+    <small>by {{ post.author.username }} — {{ post.published_date }}</small>
+    <p>{{ post.content|truncatechars:150 }}</p>
+  </li>
+  {% empty %}
+  <li>No posts yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
