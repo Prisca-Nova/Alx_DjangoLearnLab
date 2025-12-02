@@ -39,6 +39,7 @@ CSP_SCRIPT_SRC = ("'self'",)
 CSP_IMG_SRC = ("'self'", "data:")
 
 # ==================== HTTPS & SECURITY ENFORCEMENT ====================
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Redirect all HTTP requests to HTTPS
 SECURE_SSL_REDIRECT = True
